@@ -18,9 +18,20 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory = "static"), name = "static")
 templates = Jinja2Templates(directory="templates")
 
+
+
+
+
+
 @app.get('/')
 def index(request: Request):
-    return templates.TemplateResponse("signup.html", {"request": request})
+    return templates.TemplateResponse("open.html", {"request": request})
+
+
+@app.get("/login", response_class=HTMLResponse)
+def login(request: dict):
+    return templates.TemplateResponse("login.html", {"request": request})
+
 
 @app.get('/video_feed1')
 def video_feed1():
