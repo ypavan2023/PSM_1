@@ -20,7 +20,7 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get('/')
 def index(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse("signup.html", {"request": request})
 
 @app.get('/video_feed1')
 def video_feed1():

@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./static/style.css"> 
+    <title>Home Page</title>
+    <style media="screen">
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #080710;
+}
+.background{
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.background .shape{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+.shape:first-child{
+    background: linear-gradient(
+        #1845ad,
+        #23a2f6
+    );
+    left: -80px;
+    top: -80px;
+}
+.shape:last-child{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    right: -30px;
+    bottom: -80px;
+}
+form{
+    height: 600px;
+    width: 450px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+ *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+input{
+    display: block;
+    height: 40px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 2px;
+    font-size: 14px;
+    font-weight: 300;
+}
+::placeholder{
+    color: #e5e5e5;
+}
+button{
+    margin-top: 14px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.social{
+  margin-top: 30px;
+  display: flex;
+}
+.social div{
+  background: red;
+  width: 150px;
+  border-radius: 3px;
+  padding: 5px 10px 10px 5px;
+  background-color: rgba(255,255,255,0.27);
+  color: #eaf0fb;
+  text-align: center;
+}
+.social div:hover{
+  background-color: rgba(255,255,255,0.47);
+}
+.social .fb{
+  margin-left: 25px;
+}
+.social i{
+  margin-right: 4px;
+}
+
+.brand {
+    font-weight: bold;
+    font-size: 20px; }
+  
+.site-header {
+    position: relative;
+     background-color: rgba(255,255,255,0.13); } 
+  
+  .site-header__wrapper {
+    padding-top: 1rem;
+    padding-bottom: 1rem; }
+    @media (min-width: 600px) {
+      .site-header__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 0;
+        padding-bottom: 0; } }
+        @media(min-width: 600px) {
+    .nav__wrapper {
+      display: flex; } }
+  
+      @media(max-width: 599px) {
+    .nav__wrapper {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      z-index: -1;
+      background-color: rgba(255,255,255,0.13);
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease-out, opacity 0.3s ease-out; }
+      .nav__wrapper.active {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0); } }
+  
+  .nav__item a {
+    display: block;
+    padding: 1.5rem 1rem; }
+  
+  .nav__toggle {
+    display: none; }
+    @media (max-width: 599px) {
+      .nav__toggle {
+        display: block;
+        position: absolute;
+        right: 1rem;
+        top: 1rem; } }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <header class="site-header">
+      <div class="wrapper site-header__wrapper">
+        <a href="#" class="brand">PARKSYNC</a>
+        <nav class="nav">
+          <button class="nav__toggle" aria-expanded="false" type="button">
+            menu
+          </button>
+          <ul class="nav__wrapper">
+            <li class="nav__item"><a href="#">Home</a></li>
+            <li class="nav__item"><a href="#">About</a></li>
+            <li class="nav__item"><a href="#">Services</a></li>
+
+            <li class="nav__item"><a href="#">Contact</a></li>
+            <li class="nav__item"><a href="" class="btn btn-primary">Logout</a></a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  
+    <div id="main" >
+      <div class="mainContainer">
+          <div class="levels">
+              <div id="level1" class="levelHighlight">
+                  <h1 id="level1_text">LEVEL1</h1>
+                  <div>
+                      <h1 id="slots1">10</h1>
+                  </div>
+              </div>
+              <div id="level2">
+                  <h1 id="level2_text">LEVEL2</h1>
+                  <div>
+                      <h1 id="slots2">10</h1>
+                  </div>
+              </div>
+          </div >
+          <div class="imgContainer">
+              <img id="image1" src="{{ url_for('video_feed1') }}" class="img1">
+              <img id="image1" src="{{ url_for('video_feed2') }}" class="img1">
+          </div>
+      </div>
+</div>
+    
+    <!-- Geolocation script -->
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, positionError);
+            } else {
+                console.log("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            // Display the user's current location (you can customize this part)
+            alert(`Your current location is:\nLatitude: ${latitude}\nLongitude: ${longitude}`);
+        }
+
+        function positionError(error) {
+            if (error.PERMISSION_DENIED) {
+                console.log("Error: permission denied");
+                // Your custom modal here.
+                showError('Geolocation is not enabled. Please enable to use this feature.');
+            } else {
+                // Handle other kinds of errors.
+                console.log("Other kind of error: " + error);
+            }
+        }
+
+        function showError(message) {
+            // TODO: Implement your custom error handling logic.
+            alert(message); // For demonstration purposes, shows an alert with the error message.
+        }
+
+        getLocation();
+
+
+        setInterval(()=>{
+                fetch('/value1').then((res)=>{
+                let x = res.json().then(data => {
+                        const jsonDataDisplayElement = document.getElementById('slots1');
+                        jsonDataDisplayElement.innerHTML = JSON.stringify(data.value, null, 2);
+                    })
+            }) 
+            },1000)
+            setInterval(()=>{
+                fetch('/value2').then((res)=>{
+                let x = res.json().then(data => {
+                        const jsonDataDisplayElement = document.getElementById('slots2');
+                        jsonDataDisplayElement.innerHTML = JSON.stringify(data.value, null, 2);
+                    })
+            }) 
+            },1000)
+            
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
