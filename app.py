@@ -25,12 +25,27 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get('/')
 def index(request: Request):
-    return templates.TemplateResponse("open.html", {"request": request})
+    return templates.TemplateResponse("signup.html", {"request": request})
 
 
-@app.get("/login", response_class=HTMLResponse)
-def login(request: dict):
+@app.get("/login")
+def login(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
+
+@app.post("/login")
+def login(request: Request):
+    # Process login logic here
+    # Redirect to the homepage
+    return RedirectResponse(url="/home")
+
+@app.get("/home")
+def homepage(request: Request):
+    return templates.TemplateResponse("home.html", {"request": request})
+
+
+# @app.get("/login", response_class=HTMLResponse)
+# def login(request: dict):
+#     return templates.TemplateResponse("login.html", {"request": request})
 
 
 @app.get('/video_feed1')

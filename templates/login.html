@@ -131,15 +131,32 @@ button{
 .social i{
   margin-right: 4px;
 }
-
     </style>
+
+<script>
+    function validateForm() {
+        // Get the values from the form
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        // Check if any of the fields are empty
+        if (username.trim() === '' || password.trim() === '') {
+            alert('Please fill in all fields before submitting.');
+            return false;  // Prevent form submission
+        }
+
+        // If all fields are filled, redirect to the desired page
+        window.location.href = '/home';
+        return false;  // Prevent form submission
+    }
+</script>
 </head>
 <body>
     <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form method="post">
+    <form onsubmit="return validateForm()" >
         <h3>Login Here</h3>
        
         <label for="username">Username</label>
@@ -149,12 +166,8 @@ button{
         <input type="password" placeholder="Password" id="password" name="pass">
 
         <button type="submit">Log In</button>
-        <!-- <input type="button" value=""> -->
-        <!-- <div class="social">
-          <div class="go"><i class="fab fa-google"></i>  Google</div>
-          <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
-        </div> -->
-        <a href="signup.html" >Create a account</a>
+       
+        <a href="/" >Create a account</a>
     </form>
 </body>
 </html>
