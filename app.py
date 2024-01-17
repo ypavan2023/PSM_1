@@ -25,7 +25,7 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get('/')
 def index(request: Request):
-    return templates.TemplateResponse("signup.html", {"request": request})
+    return templates.TemplateResponse("open.html", {"request": request})
 
 
 @app.get("/login")
