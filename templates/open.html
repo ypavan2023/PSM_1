@@ -7,24 +7,32 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/20c5629a29.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300;500;600&display=swap">
+   <style>
+        /* Add styles for smooth scrolling */
+        body {
+            scroll-behavior: smooth;
+        }
+    </style>
+
 </head>
 
 <body>
     
 <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/food-munch-img.png" class="food-munch-logo" />
+        <a class="navbar-brand food-munch-logo" href="#">
+            <p style="font-size: 42px; font-family: 'MuseoModerno', sans-serif;  margin-left:-47px;">PARKSYNC</p>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto">
-                <a class="nav-link active" id="navitem1" href="#sectionwcu">Why Choose Us <i class="fa fa-question" style="font-size:24px"></i><span class="sr-only">(current)</span></a>
-                <a class="nav-link" id="navitem2" href="#exp">Explore Solution <i class="fa fa-search" style="font-size:24px"></i></a>
-                <a class="nav-link" id="navitem3" href="#dp">Sign up <i class='fas fa-user-alt' style='font-size:24px'></i></a>
-                <a class="nav-link" id="navitem4" href="#fu">Login <i class="fa fa-sign-in" style="font-size:24px"></i></a>
+            <div id="navtools" class="navbar-nav ml-auto">
+                <a class="nav-link active" id="navitem1" href="#sectionwcu">Why Choose Us <i class="fa fa-question" style="font-size:24px"></i>&nbsp<span class="sr-only">(current)</span></a>
+                <a class="nav-link" id="navitem2" href="#exp">Explore Solution <i class="fa fa-search" style="font-size:24px"></i>&nbsp&nbsp</a>
+                <a class="nav-link" id="navitem3" href="/sign">Sign up <i class='fas fa-user-alt' style='font-size:24px'></i>&nbsp&nbsp</a>
+                <a class="nav-link" id="navitem4" href="/lg">Login <i class="fa fa-sign-in" style="font-size:24px"></i></a>
             </div>
         </div>
     </div>
@@ -171,4 +179,51 @@ Our application, once granted location access, suggests nearby hotels and malls.
     </div>
 </div>
 
+<div class="footer-section pt-5 pb-5">
+    <div class="container">
+        <div class="row foot">
+            
+            <div class="des1 col-12 col-md-4">
+                <h2 style="color:white">Solutions</h2>
+                <h5>Overview</h5>
+                <h5>Smart Phone App</h5>
+                <h5>Data Intelligence Dashboard</h5>
+                <h5>Enforcement Portal</h5>
+                
+            </div>
+            
+            <div class="des1 col-12 col-md-4">
+                <p style="font-size: 42px; font-family: 'MuseoModerno', sans-serif;">PARKSYNC</p>
+            </div>
+            
+            <div class=" des1 col-12 col-md-4">
+                <h2 style="color:white">Explore</h2>
+                <h5>Advantages</h5>
+                <h5>News</h5>
+                <h5>Contact</h5>
+                <h5>Privacy Policy</h5>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    // Add smooth scrolling for the navigation links
+    $(document).ready(function(){
+        $("#navitem2").on('click', function(event) {
+            if (this.hash !== "") {
+                event.preventDefault();
+                var hash = this.hash;
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 3800, function(){
+                    window.location.hash = hash;
+                });
+            }
+        });
+    });
+</script>
 </body>

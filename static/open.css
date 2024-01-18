@@ -2,18 +2,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
 
 
+.container
+{
+    padding: 0;
+}
 #navitem1 {
     color: #323f4b;
+    margin-right: 10px;
     font-family: Roboto;
 }
 
 #navitem2 {
     color: #323f4b;
+    margin-right: 20px;
     font-family: Roboto;
 }
 
 #navitem3 {
     color: #323f4b;
+    margin-right: 4px;
     font-family: Roboto;
 }
 
@@ -23,8 +30,8 @@
 }
 
 .food-munch-logo {
-    width: 80px;
-    height: 70px;
+    width: 100px;
+   font-size: 44px;
 }
 
 .banner-section-bg-container {
@@ -142,3 +149,13 @@
     color: #1133de;
 }
 
+
+.footer-section {
+    background-color: #152632;
+    color:rgb(199, 198, 198);
+}
+
+.des1
+{
+    align-items: center;
+}

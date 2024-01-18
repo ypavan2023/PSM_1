@@ -27,6 +27,16 @@ templates = Jinja2Templates(directory="templates")
 def index(request: Request):
     return templates.TemplateResponse("open.html", {"request": request})
 
+@app.get("/sign")
+def login(request: Request):
+    return templates.TemplateResponse("signup.html", {"request": request})
+
+@app.post("/sign")
+def login(request: Request):
+    # Process login logic here
+    # Redirect to the homepage
+    return RedirectResponse(url="/sign")
+
 
 @app.get("/login")
 def login(request: Request):
