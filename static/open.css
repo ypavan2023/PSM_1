@@ -107,3 +107,38 @@
     border-radius: 8px;
     margin-right: 10px;
 }
+
+
+
+.follow-us-section {
+    text-align: center;
+    color: #183b56;
+    font-family: "Roboto";
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.follow-us-icon-container {
+    background-color: #faf7e8;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    margin: 15px;
+    padding-top: 22px;
+    padding-bottom: 14px;
+    padding-right: 16px;
+    padding-left: 22px;
+}
+.icont {
+    font-size: 40px;
+    color: #052e74;
+}
+.iconi {
+    font-size: 40px;
+    color: #eb104e;
+}
+.iconf {
+    font-size: 40px;
+    color: #1133de;
+}
+
