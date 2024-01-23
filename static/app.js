@@ -46,14 +46,16 @@ class Chatbox {
         let msg1 = { name: "User", message: text1 }
         this.messages.push(msg1);
 
-        fetch('/predict', {
+        const currentPath = window.location.pathname;
+
+        fetch(`${currentPath}/predict`, {
             method: 'POST',
             body: JSON.stringify({ message: text1 }),
             mode: 'cors',
             headers: {
-              'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             },
-          })
+        })
           .then(r => r.json())
           .then(r => {
             let msg2 = { name: "Sam", message: r.answer };
