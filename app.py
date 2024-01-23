@@ -12,6 +12,11 @@ import os
 from dotenv import load_dotenv
 from main import management,check,gen_frames,updatedValues1,updatedValues2
 
+
+from flask import  Flask,render_template,request,jsonify
+
+from chat import get_response
+
 load_dotenv('.env')
  
 app = FastAPI()
@@ -56,6 +61,7 @@ def homepage(request: Request):
 # @app.get("/login", response_class=HTMLResponse)
 # def login(request: dict):
 #     return templates.TemplateResponse("login.html", {"request": request})
+
 
 @app.post("/predict")
 def predict():
