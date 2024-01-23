@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 from main import management,check,gen_frames,updatedValues1,updatedValues2
 
 load_dotenv('.env')
-
+ 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory = "static"), name = "static")
 templates = Jinja2Templates(directory="templates")
@@ -56,6 +56,13 @@ def homepage(request: Request):
 # @app.get("/login", response_class=HTMLResponse)
 # def login(request: dict):
 #     return templates.TemplateResponse("login.html", {"request": request})
+
+@app.post("/predict")
+def predict():
+    text=request.get_json().get("message")
+    response=get_response(text)
+    message={"answer":response}
+    return jsonify(message)
 
 
 @app.get('/video_feed1')

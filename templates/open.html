@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="./static/stylebot.css">
     <link rel="stylesheet" href="./static/open.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -208,10 +209,44 @@ Our application, once granted location access, suggests nearby hotels and malls.
     </div>
 </div>
 
+<div class="container fixed-bottom" style="position: fixed; bottom: 0; right: -20%;">
+    <div class="chatbox">
+        <div class="chatbox__support">
+            <div class="chatbox__header">
+                <div class="chatbox__image--header">
+                    <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-5--v1.png" alt="image">
+                </div>
+                <div class="chatbox__content--header">
+                    <h4 class="chatbox__heading--header">Chat support</h4>
+                    <p class="chatbox__description--header">Hi. My name is Sam. How can I help you?</p>
+                </div>
+            </div>
+            <div class="chatbox__messages">
+                <div></div>
+            </div>
+            <div class="chatbox__footer">
+                <input type="text" placeholder="Write a message...">
+                <button class="chatbox__send--footer send__button">Send</button>
+            </div>
+        </div>
+        <div class="chatbox__button">
+            <button><img src="./static/images/chatbox-icon.svg" /></button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="./static/app.js"></script>
+
+
+
+
+
 
 
 <script>
-    // Add smooth scrolling for the navigation links
+   
+
+// Add smooth scrolling for the navigation links
     $(document).ready(function(){
         $("#navitem2").on('click', function(event) {
             if (this.hash !== "") {
