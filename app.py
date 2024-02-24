@@ -58,6 +58,15 @@ def homepage(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
 
 
+@app.get("/map")
+def homepage(request: Request):
+    return templates.TemplateResponse("map.html", {"request": request})
+
+@app.get("/home")
+def homepage(request: Request):
+    return templates.TemplateResponse("home.html", {"request": request})
+
+
 # @app.get("/login", response_class=HTMLResponse)
 # def login(request: dict):
 #     return templates.TemplateResponse("login.html", {"request": request})

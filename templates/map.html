@@ -11,45 +11,130 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/20c5629a29.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300;500;600&display=swap">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+  
    <style>
-        /* Add styles for smooth scrolling */
+       
         body {
             scroll-behavior: smooth;
         }
 
         input[type="text"] {
-    width: 100vw;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
     padding: 10px; /* Adjust padding as needed */
     font-size: 16px; /* Adjust font size as needed */
   }
+  #map {
+            margin-top: 2vh;
+            margin-left: 4vw;
+            height: 400px;
+            width: 90%;
+            justify-content: center;
+    text-align: center;
+    align-items: center;
+        }
+
     </style>
 
 </head>
 
 <body>
     
-<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-    <div class="container">
-        <a class="navbar-brand food-munch-logo" href="#">
-            <p style="font-size: 42px; font-family: 'MuseoModerno', sans-serif;  margin-left:-47px;">PARKSYNC</p>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div id="navtools" class="navbar-nav ml-auto">
-                <a class="nav-link active" id="navitem1" href="#sectionwcu">Why Choose Us <i class="fa fa-question" style="font-size:24px"></i>&nbsp<span class="sr-only">(current)</span></a>
-                <a class="nav-link" id="navitem2" href="#exp">Explore Solution <i class="fa fa-search" style="font-size:24px"></i>&nbsp&nbsp</a>
-                <a class="nav-link" id="navitem3" href="/sign">Sign up <i class='fas fa-user-alt' style='font-size:24px'></i>&nbsp&nbsp</a>
-                <a class="nav-link" id="navitem4" href="/lg">Login <i class="fa fa-sign-in" style="font-size:24px"></i></a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white ">
+        <div class="container">
+            <a class="navbar-brand food-munch-logo" href="#">
+                <p style="font-size: 42px; font-family: 'MuseoModerno', sans-serif;  margin-left:-47px;">PARKSYNC</p>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div id="navtools" class="navbar-nav ml-auto">
+                    <a class="nav-link active" id="navitem1" href="#sectionwcu">Why Choose Us <i class="fa fa-question" style="font-size:24px"></i>&nbsp<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" id="navitem2" href="#exp">Explore Solution <i class="fa fa-search" style="font-size:24px"></i>&nbsp&nbsp</a>
+                    <a class="nav-link" id="navitem3" href="/sign">Sign up <i class='fas fa-user-alt' style='font-size:24px'></i>&nbsp&nbsp</a>
+                    <a class="nav-link" id="navitem4" href="/lg">Login <i class="fa fa-sign-in" style="font-size:24px"></i></a>
+                </div>
             </div>
         </div>
+    </nav>
+
+    <h2 class="searchhead">Give your Destination <i class="fas fa-directions" style="font-size: 27px;"></i></h2>
+
+    <div class="inputmap">
+    <input id="addressInput" class="col-12 col-lg-9" type="text" placeholder="Give the location address">
+    <button onclick="searchLocation()" "text-align: center;" class="col-12 col-lg-2 custom-button"><b>Search <i class="fa fa-search"></i></b></button>
     </div>
-</nav>
+    
+    <div class="resmap">
+    <h2 id="headaddress"></h2>
+    <div id="map"></div>
+    </div>
 
-<input type="text" placeholder="Type something...">
+    <script>
+       var map;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 0, lng: 0},
+                zoom: 8
+            });
+        }
+
+        function searchLocation() {
+            var geocoder = new google.maps.Geocoder();
+            var address = document.getElementById('addressInput').value;
+
+            geocoder.geocode({'address': address}, function(results, status) {
+                if (status === 'OK') {
+                    var location = results[0].geometry.location;
+                    map.setCenter(location);
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: location
+                    });
+
+                    // Create an info window
+                    var infoWindow = new google.maps.InfoWindow({
+    content: '<strong style="font-weight:bold; font-size=22px;">' + address + '</strong><br>' +
+            '<br><button class="search" onclick="getDirections(' + location.lat() + ', ' + location.lng() + ')">Get Directions <i class="fas fa-directions"></i> </button><br>' +
+            '<br><button class="custom-button" onclick="navigateToIndex()" >Get the park slot <i class="fas fa-car-alt"></i></button>'
+});
 
 
+                    // Add click event listener to the marker
+                    marker.addListener('click', function() {
+                        infoWindow.open(map, marker);
+                    });
+                    document.getElementById('headaddress').innerHTML = "<span style='color: #d0b200;'>Location: </span>" + address;
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+
+        function getDirections(lat, lng) {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var origin = position.coords.latitude + ',' + position.coords.longitude;
+                    var destination = lat + ',' + lng;
+                    window.open('https://www.google.com/maps/dir/' + origin + '/' + destination);
+                });
+            } else {
+                alert('Geolocation is not supported by this browser.');
+            }
+        }
+
+        function navigateToIndex() {
+            
+            window.location.href = '/home';
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8zWPtv1G6B05tim27903BAeUQXjGS9dc&callback=initMap"></script>
 
 
 </body>
+</html>

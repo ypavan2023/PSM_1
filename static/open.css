@@ -159,3 +159,45 @@
 {
     align-items: center;
 }
+
+
+.inputmap
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    
+}
+
+.search
+{
+    color: white;
+    background-color: #3193f6;
+    width: 130px;
+    height: 45px;
+    border-width: 0;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+
+.searchhead
+{
+    margin-left: 4vw;
+    margin-bottom: 3vh;
+    
+}
+
+#headaddress
+{
+    margin-left: 4vw;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.resmap
+{
+    margin-top: 4vh;
+}
