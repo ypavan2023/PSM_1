@@ -67,6 +67,11 @@ def homepage(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
 
 
+@app.get("/profile")
+def homepage(request: Request):
+    return templates.TemplateResponse("profile.html", {"request": request})
+
+
 # @app.get("/login", response_class=HTMLResponse)
 # def login(request: dict):
 #     return templates.TemplateResponse("login.html", {"request": request})
