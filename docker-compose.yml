@@ -15,7 +15,7 @@ services:
    env_file:
      - ./.env
    volumes:
-     - postgres-db:/var/lib/postgresql/data
+     - ./data_db:/var/tmp
 
   pgadmin:
    container_name: pgadmin4

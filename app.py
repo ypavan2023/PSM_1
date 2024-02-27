@@ -9,7 +9,8 @@ import cv2
 import pickle
 import numpy as np
 import os
-
+import psycopg2
+from fastapi.responses import RedirectResponse
 from dotenv import load_dotenv
 from main import management,check,gen_frames,updatedValues1,updatedValues2
 
@@ -19,7 +20,17 @@ from flask import  Flask,render_template,request,jsonify
 from chat import get_response
 
 load_dotenv('.env')
- 
+
+conn = psycopg2.connect(
+    dbname=os.getenv("POSTGRES_DB"),
+    user=os.getenv("POSTGRES_USER"),
+    password=os.getenv("POSTGRES_PASSWORD"),
+    host="postgres",
+    port=os.getenv("DATABASE_PORT")
+)
+
+
+
 app = FastAPI()
 app.mount("/static", StaticFiles(directory = "static"), name = "static")
 templates = Jinja2Templates(directory="templates")
@@ -37,41 +48,40 @@ def signup(request: Request):
 
 @app.post("/sign")
 async def signup(
-    request: Request, username: str = Form(...), password: str = Form(...)
+    request: Request, username: str = Form(...), email: str = Form(...),password1: str = Form(...),password2:str = Form(...) 
 ):
-    # Check if the username already exists in the database
+   
     cur = conn.cursor()
-    cur.execute("SELECT * FROM users WHERE username=%s", (username,))
-    existing_user = cur.fetchone()
-    cur.close()
-    
-    if existing_user:
-        return RedirectResponse(
-            url="/",
-            status_code=status.HTTP_303_SEE_OTHER,
-            headers={"Location": "/?error=Username%20already%20exists"},
-        )
-
-    # Insert the new user into the database
-    cur = conn.cursor()
-    cur.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (username, password))
+    cur.execute("INSERT INTO users1 (uname,email,password1,password2) VALUES (%s, %s,%s, %s)", (username,email,password1,password2))
     conn.commit()
-    cur.close()
-    # Process login logic here
-    # Redirect to the homepage
-    return RedirectResponse(url="/login")
-
+    cur.close() 
+ 
+    return RedirectResponse("/login", status_code=303)
 
 @app.get("/login")
 def login(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
 @app.post("/login")
-def login(request: Request):
-    # Process login logic here
-    # Redirect to the homepage
-    return RedirectResponse(url="/home")
+async def do_login(
+    request: Request,
+    username: str = Form(...),
+    password: str = Form(...),
+):
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM users1 WHERE uname=%s and password1=%s", (username,password))
+    existing_user = cur.fetchone()
+    cur.close()
+    
+    if existing_user:
+        print(existing_user)
+        return RedirectResponse("/map", status_code=303)
+    
+    else:
+        return JSONResponse(status_code=401, content={"message": "Wrong credentials"})
 
+
+    
 @app.get("/home")
 def homepage(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
