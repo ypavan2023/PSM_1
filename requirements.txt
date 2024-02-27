@@ -9,3 +9,4 @@ flask
 torch
 nltk
 psycopg2
+python-multipart

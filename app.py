@@ -1,5 +1,5 @@
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI,Form
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse,JSONResponse
 from fastapi.templating import Jinja2Templates
@@ -9,6 +9,7 @@ import cv2
 import pickle
 import numpy as np
 import os
+
 from dotenv import load_dotenv
 from main import management,check,gen_frames,updatedValues1,updatedValues2
 
@@ -26,21 +27,39 @@ templates = Jinja2Templates(directory="templates")
 
 
 
-
-
 @app.get('/')
 def index(request: Request):
     return templates.TemplateResponse("open.html", {"request": request})
 
 @app.get("/sign")
-def login(request: Request):
+def signup(request: Request):
     return templates.TemplateResponse("signup.html", {"request": request})
 
 @app.post("/sign")
-def login(request: Request):
+async def signup(
+    request: Request, username: str = Form(...), password: str = Form(...)
+):
+    # Check if the username already exists in the database
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM users WHERE username=%s", (username,))
+    existing_user = cur.fetchone()
+    cur.close()
+    
+    if existing_user:
+        return RedirectResponse(
+            url="/",
+            status_code=status.HTTP_303_SEE_OTHER,
+            headers={"Location": "/?error=Username%20already%20exists"},
+        )
+
+    # Insert the new user into the database
+    cur = conn.cursor()
+    cur.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (username, password))
+    conn.commit()
+    cur.close()
     # Process login logic here
     # Redirect to the homepage
-    return RedirectResponse(url="/sign")
+    return RedirectResponse(url="/login")
 
 
 @app.get("/login")
